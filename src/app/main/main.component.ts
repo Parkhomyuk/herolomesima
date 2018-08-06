@@ -153,6 +153,8 @@ export class MainComponent implements OnInit  {
     this.books=this.booksAll.slice(this.selectedPage-1,this.booksPerPage);
   }
   backByDefoult(){
+    this.selectedCategory=null;
+    console.log(this.selectedCategory)
     this.getBooks();
   }
   compare(a,b) {
@@ -209,7 +211,7 @@ export class MainComponent implements OnInit  {
       status=this.currentBookEdit.status;
       thumbnailUrl=this.currentBookEdit.thumbnailUrl;
       longDescription=this.currentBookEdit.longDescription;
-      publishedDate=this.currentBookEdit.publishedDate['$date'];
+      publishedDate=this.currentBookEdit.publishedDate;
       if(this.currentBookEdit['authors']){
         for(let author of this.currentBookEdit.authors){
 
@@ -293,6 +295,7 @@ export class MainComponent implements OnInit  {
   onAddNewBook(book){
     let authors=[];
     let categories=[];
+    book.publishedDate=book.publishedDate;
     for(let j=0;j<book['authors'].length;j++){
       authors.push(book['authors'][j].nameAuthor)
     }
